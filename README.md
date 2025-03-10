@@ -1,16 +1,54 @@
-# darwin
+# Darwin - 학습을 돕는 SNS 서비스
 
-A new Flutter project.
+## 소개
+Darwin은 학생들이 보다 효과적으로 학습하고 정보를 공유할 수 있도록 돕는 SNS 서비스입니다. 학교 일정, 수행평가 준비, 실시간 채팅 및 학습 시간 측정 기능을 포함하여 학습 환경을 최적화하는 다양한 기능을 제공합니다.
 
-## Getting Started
+## 보조 영상
+[프로젝트 시연 영상](https://youtu.be/Z0CVbwSIqwQ)
 
-This project is a starting point for a Flutter application.
+## 개발 배경
+학생들은 종종 내신 성적 향상을 위해 필요한 점수를 계산하거나 수행평가 준비 방법에 대한 질문을 합니다. 하지만 모든 질문을 실시간으로 받을 수는 없고, 효율적인 정보 공유 방법이 필요하다고 느꼈습니다. 이를 해결하기 위해 누구나 쉽게 사용할 수 있는 학습 지원 SNS를 개발하게 되었습니다.
 
-A few resources to get you started if this is your first Flutter project:
+## 주요 기능
+### 1. 학교 생활 지원
+- **학교 소식 제공**: 학교 시간표, 급식 메뉴, 수행평가 일정 등을 확인할 수 있습니다.
+- **시간표 조회**: NEIS Open API를 이용하여 시간표 정보를 가져와 Flutter Table 위젯을 통해 표시합니다.
+- **급식 정보 제공**: NEIS Open API에서 가져온 급식 정보를 정규 표현식을 이용해 가공 후 출력합니다.
+- **우리 반 소식**: ChatGPT 4o를 이용해 수행평가 및 숙제 정보를 분석하고 DB에 저장합니다.
+- **학교 행사 및 일정 알림**: NEIS Open API 데이터를 활용하여 학교 행사 및 학사 일정도 표시합니다.
+- **알림 기능**: 수행평가 및 준비물 알림을 Local Notification을 통해 제공하며, 급식 및 시간표 데이터는 매일 07:30에 알림이 발송됩니다.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 2. 소통 기능
+- **실시간 채팅**: 같은 학교 학생 및 선생님과 실시간 채팅이 가능합니다.
+- **채팅 구독 시스템**: SSE(Server Sent Event) 기술을 활용하여 실시간 메시지 전송 및 구독 시스템을 구현하였습니다.
+- **이미지 전송**: 이미지를 60% 압축하여 서버에 저장하고, NetworkImage 위젯을 이용해 표시합니다.
+- **커뮤니티 게시판**: 카테고리 및 필터 기능을 제공하여 원하는 주제의 게시글을 쉽게 찾을 수 있습니다.
+- **게시물 작성 및 댓글 기능**: 사용자가 자유롭게 글을 작성하고 댓글을 남길 수 있습니다.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 3. 학습 보조 기능
+- **내신 점수 계산기**: 사용자가 입력한 성적 데이터를 기반으로 예상 내신 점수를 시각적으로 표시합니다.
+- **그래프 분석**: 학기별 성적 변화를 그래프로 표현하여 학습 목표 설정을 돕습니다.
+- **공부 시간 측정**: 스톱워치를 이용하여 공부 시간을 측정하고, 친구들과 경쟁할 수 있습니다.
+- **iPhone Screen Time API 연동**: 공부 시간 동안 다른 앱 사용을 제한하여 집중력을 높입니다.
+
+### 4. 사용자 관리 기능
+- **회원가입 및 로그인**: PocketBase를 이용하여 사용자 계정을 관리합니다.
+- **보안 강화**: SHA-256 암호화를 적용하여 사용자 비밀번호를 보호합니다.
+- **자동 로그인 기능**: iOS Secure Storage 및 Android Key Chain을 활용하여 자동 로그인 기능을 제공합니다.
+- **소셜 로그인 지원**: Apple, Kakao, Google 등의 소셜 로그인을 지원합니다.
+- **로그아웃 기능**: 저장된 로그인 정보를 삭제하여 보안을 강화합니다.
+
+## 기술 스택
+- **프론트엔드**: Flutter (Dart)
+- **백엔드**: PocketBase
+- **데이터베이스**: SQLite (PocketBase 내장)
+- **API**: NEIS Open API, ChatGPT 4o
+- **실시간 통신**: SSE(Server Sent Event)
+- **보안**: SHA-256 비밀번호 암호화, iOS Secure Storage, Android Key Chain
+
+## 향후 계획
+Darwin은 학생들의 학습 환경을 개선하기 위해 지속적으로 업데이트될 예정입니다. 최종적으로 앱스토어 및 플레이스토어에 정식 출시하여 보다 많은 학생들에게 도움을 줄 수 있도록 발전시킬 계획입니다.
+
+## 라이선스
+이 프로젝트는 오픈소스로 제공되며, 자유롭게 수정 및 배포할 수 있습니다.
+
