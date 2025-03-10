@@ -3270,7 +3270,7 @@ class _SchoolState extends State<School> {
 
   Future<void> callOpenAI(XFile imageFile) async {
     final String apiKey =
-        'sk-svcacct-1aN5BMPRBAQrImKK9rJUHh_dQiRKaMilbzHz84SkLhoA67opL5stnL9o10L41hT3BlbkFJhkSBpFJ40HRrz9nHiUhiEb5BR6pOxPx5MHt2tZHFJmJlwy3C9eRvIQRbppFskA'; // OpenAI API 키
+        ''; // OpenAI API 키
     final uri = Uri.parse('https://api.openai.com/v1/chat/completions');
 
     try {
